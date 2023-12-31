@@ -28,10 +28,12 @@ def EncryptString(plaintext, chosenMethod):
             return ""
         
 # -- AskForInput --
-# - Parameters: none
+# - Parameters: versionNumber (current version of application)
 # - Returns: nothing
 # Used to ask user for plain text input and desired encryption method
-def AskForInput():
+def AskForInput(versionNumber):
+    # Show application header
+    print("=== jEncryptor (v." + versionNumber + ") ===")
     # Ask user for text input and store this as 'plaintext'
     plaintext = input("Enter the phrase that you need to be encrypted: ")
     # Present available encryption options as a clear menu
@@ -60,5 +62,8 @@ def AskForInput():
         print("Entered method could not be found, please try again")
     
 # Main entry point of jEncryptor console application
-AskForInput()
+versionNumber = "1.0.0.1"
+AskForInput(versionNumber)
+# Wait before exiting application
+input("\nHash successfully generated...")
 
