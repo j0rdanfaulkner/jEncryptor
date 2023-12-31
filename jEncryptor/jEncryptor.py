@@ -1,4 +1,4 @@
-# Import Hash algorithms from 'hashlib'
+# Import Hash algorithms using 'hashlib'
 import hashlib
 
 # -- EncryptString --
@@ -36,9 +36,9 @@ def AskForInput(versionNumber):
     print("=== jEncryptor (v." + versionNumber + ") ===")
     # Ask user for text input and store this as 'plaintext'
     plaintext = input("Enter the phrase that you need to be encrypted: ")
-    # Present available encryption options as a clear menu
+    # Present available options as a clear menu
     print("\n=== Encryption Menu ===")
-    # Declare available methods as an array
+    # Declare available encryption methods as an array
     methods = {'1': 'MD5', '2': 'SHA-256'}
     # Display these options in the console window as part of the menu
     print("Option 1 | MD5\nOption 2 | SHA-256")
@@ -63,6 +63,7 @@ def AskForInput(versionNumber):
     
 # Main entry point of jEncryptor console application
 versionNumber = "1.0.0.1"
+# Call the 'AskForInput' function with 'versionNumber' variable as a parameter
 AskForInput(versionNumber)
 # Wait before exiting application
 input("\nHash successfully generated...")
