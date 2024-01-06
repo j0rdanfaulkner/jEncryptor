@@ -1,10 +1,22 @@
 # Import Hash algorithms using 'hashlib'
+import copy
 import hashlib
+
+# Import clipboard functionality using 'subprocess'
+import subprocess
+
+# -- CopyToClipboard --
+# Parameters:   value (string that will be copied to the clipboard)
+# Returns:      result of copying the hashed value to the system clipboard
+def CopyToClipboard(value):
+    print("The hash has been copied to your clipboard")
+    cmd = 'echo ' + value.strip() + '|clip'
+    return subprocess.check_call(cmd, shell=True)
 
 # -- EncryptString --
 # - Parameters: plaintext (text that needs to be encrypted)
 # -             chosenMethod (user-chosen algorithm that will be used to provide a hashed version of the plain text)
-# - Returns: Hashed value of plain text
+# - Returns:    Hashed value of plain text
 # Used to encrypt the plain text given by user using their intended encryption method, then returns the hash value to them
 def EncryptString(plaintext, chosenMethod):
     match chosenMethod:
@@ -53,6 +65,8 @@ def AskForInput(versionNumber):
         encryptedText = EncryptString(plaintext, chosenMethod)
         # Display the hashed phrase using the result returned from the 'encryptedText' function
         print("The " + chosenMethod + " hash of your phrase is: " + encryptedText)
+        # Pass the hashed value to the 'CopyToClipboard' function as a parameter
+        CopyToClipboard(encryptedText)
     # If user is typing something before the menu number or the name of the method itself
     elif len(choice) != 1:
         # Ask user to try again entering only the number of the menu option
@@ -62,7 +76,7 @@ def AskForInput(versionNumber):
         print("Entered method could not be found, please try again")
     
 # Main entry point of jEncryptor console application
-versionNumber = "1.0.0.1"
+versionNumber = "1.0.0.2"
 # Call the 'AskForInput' function with 'versionNumber' variable as a parameter
 AskForInput(versionNumber)
 # Wait before exiting application
