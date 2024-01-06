@@ -1,22 +1,22 @@
-# Import Hash algorithms using 'hashlib'
-import copy
+# Import 'hashlib' to access hashing functionality
 import hashlib
 
-# Import clipboard functionality using 'subprocess'
+# Import 'subprocess' to enable clipboard functionality
 import subprocess
 
 # -- CopyToClipboard --
-# Parameters:   value (string that will be copied to the clipboard)
-# Returns:      result of copying the hashed value to the system clipboard
+# - Parameters:     value (string that will be copied to the clipboard)
+# - Returns:        result of copying the hashed value to the system clipboard
+# Used to automatically copy the hash to the system clipboard for ease of access
 def CopyToClipboard(value):
-    print("The hash has been copied to your clipboard")
+    print("This hash has been copied to your clipboard")
     cmd = 'echo ' + value.strip() + '|clip'
     return subprocess.check_call(cmd, shell=True)
 
 # -- EncryptString --
-# - Parameters: plaintext (text that needs to be encrypted)
-# -             chosenMethod (user-chosen algorithm that will be used to provide a hashed version of the plain text)
-# - Returns:    Hashed value of plain text
+# - Parameters:     plaintext (text that needs to be encrypted)
+# -                 chosenMethod (user-chosen algorithm that will be used to provide a hashed version of the plain text)
+# - Returns:        Hashed value of plain text
 # Used to encrypt the plain text given by user using their intended encryption method, then returns the hash value to them
 def EncryptString(plaintext, chosenMethod):
     match chosenMethod:
@@ -40,8 +40,8 @@ def EncryptString(plaintext, chosenMethod):
             return ""
         
 # -- AskForInput --
-# - Parameters: versionNumber (current version of application)
-# - Returns: nothing
+# - Parameters:     versionNumber (current version of application)
+# - Returns:        nothing
 # Used to ask user for plain text input and desired encryption method
 def AskForInput(versionNumber):
     # Show application header
